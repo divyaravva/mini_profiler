@@ -1,0 +1,30 @@
+<h1>Show all users and posts of each user</h1>
+
+<table style="width: 1000px">
+	<tr>
+		<td>Name</td>
+		<td>Email Address</td>
+		<td>Post Name</td>
+	</tr>
+
+	<%unless @all_users.blank?%>
+		<%@all_users.all.each do |each_user|%>
+		<tr>
+			<td><%= each_user.name%></td>
+			<td><%= each_user.email_address%></td>
+			<td><%= each_user.posts.map{|e_post| e_post.post_name}.join(", ")%></td>
+		</tr>
+		<%end%>
+	<%end%>
+</table>
+
+
+<style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 15px;
+}
+</style>
